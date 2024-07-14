@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2wh2o80f8g1"]
+
+[ext_resource type="Script" path="res://SceneManager.gd" id="1_f5ks5"]
+[ext_resource type="PackedScene" uid="uid://b64h4181bxhow" path="res://src/nodes/states.tscn" id="2_ly4cm"]
+
+[node name="Main" type="Node"]
+
+[node name="SceneManager" type="Node" parent="."]
+script = ExtResource("1_f5ks5")
+
+[node name="Game" type="Node" parent="SceneManager"]
+
+[node name="Intro" type="Control" parent="SceneManager"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="SceneManager/Intro"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "INTRO
+"
+
+[node name="MainMenu" type="Control" parent="SceneManager"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label2" type="Label" parent="SceneManager/MainMenu"]
+offset_right = 50.0
+offset_bottom = 23.0
+text = "MAIN_MENU"
+
+[node name="PauseMenu" type="Control" parent="SceneManager"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label3" type="Label" parent="SceneManager/PauseMenu"]
+offset_right = 50.0
+offset_bottom = 23.0
+text = "PAUSE_MENU
+"
+
+[node name="GameOver" type="Control" parent="SceneManager"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label4" type="Label" parent="SceneManager/GameOver"]
+offset_right = 50.0
+offset_bottom = 23.0
+text = "GAME_OVER"
+
+[node name="Credits" type="Control" parent="SceneManager"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label5" type="Label" parent="SceneManager/Credits"]
+offset_right = 50.0
+offset_bottom = 23.0
+text = "CREDITS"
+
+[node name="States" parent="." instance=ExtResource("2_ly4cm")]
