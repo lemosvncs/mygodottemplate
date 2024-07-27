@@ -18,6 +18,7 @@ func _ready():
 	set_screen_visibility(current_state)
 	
 func set_screen_visibility(new_state):
+	
 	for screen in screen_scenes:
 		if screen_scenes[screen] != screen_scenes[states.GAME] and screen_scenes[screen] != screen_scenes[new_state]:
 			screen_scenes[screen].visible = false
@@ -27,13 +28,19 @@ func change_state(new_state):
 	match new_state:
 		states.INTRO:
 			set_screen_visibility(new_state)
+			current_state = new_state
 		states.MAIN_MENU:
 			set_screen_visibility(new_state)
+			current_state = new_state
 		states.PAUSE_MENU:
 			set_screen_visibility(new_state)
+			current_state = new_state
 		states.GAME:
 			set_screen_visibility(new_state)
+			current_state = new_state
 		states.GAME_OVER:
 			set_screen_visibility(new_state)
+			current_state = new_state
 		states.CREDITS:
 			set_screen_visibility(new_state)
+			current_state = new_state

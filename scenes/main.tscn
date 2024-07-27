@@ -1,14 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2wh2o80f8g1"]
+[gd_scene load_steps=7 format=3 uid="uid://d2wh2o80f8g1"]
 
 [ext_resource type="Script" path="res://SceneManager.gd" id="1_f5ks5"]
+[ext_resource type="Script" path="res://src/main.gd" id="1_pmhmu"]
 [ext_resource type="PackedScene" uid="uid://b64h4181bxhow" path="res://src/nodes/states.tscn" id="2_ly4cm"]
+[ext_resource type="Script" path="res://src/Game.gd" id="3_uhfwh"]
+[ext_resource type="Theme" uid="uid://bh6g37bgukqhv" path="res://resources/theme.tres" id="3_wn3h1"]
+[ext_resource type="Texture2D" uid="uid://c4pjpcs1dbg6h" path="res://assets/kenney_ui-pack/PNG/Blue/Double/arrow_basic_e.png" id="4_n6k41"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_pmhmu")
 
 [node name="SceneManager" type="Node" parent="."]
 script = ExtResource("1_f5ks5")
 
 [node name="Game" type="Node" parent="SceneManager"]
+script = ExtResource("3_uhfwh")
+
+[node name="Sprite2D" type="Sprite2D" parent="SceneManager/Game"]
+position = Vector2(132, 120)
+texture = ExtResource("4_n6k41")
 
 [node name="Intro" type="Control" parent="SceneManager"]
 visible = false
@@ -16,6 +26,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("3_wn3h1")
 
 [node name="Label" type="Label" parent="SceneManager/Intro"]
 layout_mode = 0
@@ -27,25 +38,121 @@ text = "INTRO
 [node name="MainMenu" type="Control" parent="SceneManager"]
 visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_wn3h1")
+
+[node name="ColorRect" type="ColorRect" parent="SceneManager/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_wn3h1")
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="SceneManager/MainMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.2
+anchor_bottom = 0.5
+offset_top = -28.0
+offset_right = 61.0
+offset_bottom = 28.0
+grow_vertical = 2
+theme = ExtResource("3_wn3h1")
+
+[node name="Options" type="VBoxContainer" parent="SceneManager/MainMenu/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("3_wn3h1")
+
+[node name="Play" type="Button" parent="SceneManager/MainMenu/MarginContainer/Options"]
+layout_mode = 2
+text = "Play"
+
+[node name="Quit" type="Button" parent="SceneManager/MainMenu/MarginContainer/Options"]
+layout_mode = 2
+text = "Quit"
+
+[node name="ColorRect2" type="ColorRect" parent="SceneManager/MainMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_wn3h1")
+color = Color(0.129558, 0.129558, 0.129558, 1)
 
 [node name="Label2" type="Label" parent="SceneManager/MainMenu"]
-offset_right = 50.0
-offset_bottom = 23.0
+layout_mode = 0
+offset_right = 139.0
+offset_bottom = 37.0
+theme = ExtResource("3_wn3h1")
 text = "MAIN_MENU"
 
 [node name="PauseMenu" type="Control" parent="SceneManager"]
 visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="SceneManager/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_wn3h1")
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="SceneManager/PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.5
+offset_top = -28.0
+offset_right = 30.5
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_wn3h1")
+
+[node name="Options" type="VBoxContainer" parent="SceneManager/PauseMenu/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("3_wn3h1")
+
+[node name="Play" type="Button" parent="SceneManager/PauseMenu/MarginContainer/Options"]
+layout_mode = 2
+text = "Play"
+
+[node name="Quit" type="Button" parent="SceneManager/PauseMenu/MarginContainer/Options"]
+layout_mode = 2
+text = "Quit"
 
 [node name="Label3" type="Label" parent="SceneManager/PauseMenu"]
-offset_right = 50.0
+layout_mode = 0
+offset_right = 106.0
 offset_bottom = 23.0
+theme = ExtResource("3_wn3h1")
 text = "PAUSE_MENU
 "
 
@@ -55,8 +162,10 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("3_wn3h1")
 
 [node name="Label4" type="Label" parent="SceneManager/GameOver"]
+layout_mode = 0
 offset_right = 50.0
 offset_bottom = 23.0
 text = "GAME_OVER"
@@ -69,8 +178,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Label5" type="Label" parent="SceneManager/Credits"]
+layout_mode = 0
 offset_right = 50.0
 offset_bottom = 23.0
 text = "CREDITS"
 
 [node name="States" parent="." instance=ExtResource("2_ly4cm")]
+
+[connection signal="pressed" from="SceneManager/MainMenu/MarginContainer/Options/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="SceneManager/PauseMenu/MarginContainer/Options/Play" to="." method="_on_play_pressed"]
